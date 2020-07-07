@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: html-ppt-k8s-operator-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: html-ppt-k8s-operator-go
+  template:
+    metadata:
+      labels:
+        name: html-ppt-k8s-operator-go
+    spec:
+      serviceAccountName: html-ppt-k8s-operator-go
+      containers:
+        - name: html-ppt-k8s-operator-go
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - html-ppt-k8s-operator-go
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "html-ppt-k8s-operator-go"
