@@ -3,6 +3,7 @@ module github.com/renishb10/html-ppt-k8s-operator-go
 go 1.13
 
 require (
+	github.com/NautiluX/presentation-example-operator v0.0.0-20200228125533-bd318b416d22
 	github.com/operator-framework/operator-sdk v0.15.2
 	github.com/spf13/pflag v1.0.5
 	k8s.io/api v0.0.0
